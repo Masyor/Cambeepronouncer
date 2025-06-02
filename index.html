@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spelling Bee Pronouncer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    td, th {
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+    }
+    button {
+      margin: 5px 5px 5px 0;
+      padding: 6px 12px;
+    }
+    #controls {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    #spellerArea {
+      display: flex;
+      gap: 20px;
+    }
+    #wordDisplay {
+      padding: 10px;
+      border: 1px solid #aaa;
+      background: #f9f9f9;
+      flex-grow: 1;
+      max-width: 600px;
+    }
+    #ledger {
+      margin-top: 20px;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+    #wordCount {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .section {
+      display: flex;
+      flex-direction: column;
+    }
+	
+#spellerArea {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: nowrap;   /* Prevent wrapping */
+}
+
+
+#spellerTable {
+  min-width: 150px;
+}
+
+#wordDisplay {
+  flex-grow: 1;
+  min-width: 300px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  background: #f9f9f9;
+}
+
+#mainContainer {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+#leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 0; /* let left column take available space */
+}
+
+#ledger {
+  min-width: 300px;
+  max-height: 600px; /* or whatever fits your page */
+  overflow-y: auto;
+  border: 1px solid #aaa;
+  padding: 10px;
+  background: #fffbea;
+  flex-shrink: 0;
+}
+
+  </style>
+</head>
+<body>
+
+  <h2>Spelling Bee Pronouncer</h2>
+<div id="mainContainer">
+  <div id="leftColumn">
+  <div id="controls">
+    <div class="section">
+      <label for="spellerCount">Number of spellers:</label>
+      <select id="spellerCount">
+        <option value="">Select...</option>
+      </select>
+      <button onclick="selectSpellers()">Start</button>
+    </div>
+
+    <div class="section">
+<label for="csvUpload">Upload Wordlist (CSV):</label>
+<input type="file" id="csvUpload" accept=".csv" onchange="uploadCSV(event)" />
+
+      <div>
+        <button onclick="newWord()">New Word</button>
+        <button onclick="killerWord()">Killer Word</button>
+        <button onclick="markCorrect()">Correct</button>
+        <button onclick="disqualifySpeller()">Disqualify</button>
+        <button onclick="newRound()">New Round</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="spellerArea">
+    <div id="spellerTable"></div>
+    <div id="wordDisplay"></div>
+	
+  </div>
+
+  <div id="wordCount"></div><p id="roundDisplay"><strong>Current Round:</strong> 1</p>
+</div>
+<div id="ledger"><h4>Ledger</h4></div>
+</div>
+  <script>
+    window.onload = function () {
+      const select = document.getElementById('spellerCount');
+      for (let i = 1; i <= 20; i++) {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = i;
+        select.appendChild(opt);
+      }
+    };
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
