@@ -57,6 +57,10 @@ function uploadCSV(event) {
     const wordList = rows
       .map(row => row.split('\t').map(cell => cell.trim()))
       .filter(cells => cells.length >= 7 && cells[0]);
+    wordList.forEach(cells => {
+  const [word, uk, us] = cells;
+  console.log(`Word: ${word}, UK: ${uk}, US: ${us}`);
+});
 
 regularWords = wordList.filter(row => row[6]?.trim().toLowerCase() === "regular");
 killerWords = wordList.filter(row => row[6]?.trim().toLowerCase() === "killer");
@@ -94,8 +98,8 @@ function displayWord(wordData) {
   document.getElementById('wordDisplay').innerHTML = `
     <strong>Speller ${currentSpellerIndex + 1}</strong><br>
     <strong>Word:</strong> ${word} <br>
-    <strong>UK:</strong> <span class="phonetic">/${uk}/</span>&nbsp;&nbsp;
-    <strong>US:</strong> <span class="phonetic">/${us}/</span><br>
+    <strong>UK:</strong>/${uk}/&nbsp;&nbsp;
+    <strong>US:</strong>/${us}/<br>
     <strong>Meaning:</strong> ${meaning} <br>
     <strong>Example:</strong> ${example} <br>
     <strong>Part of Speech:</strong> ${pos} <br>
