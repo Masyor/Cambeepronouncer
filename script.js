@@ -94,7 +94,8 @@ function displayWord(wordData) {
   document.getElementById('wordDisplay').innerHTML = `
     <strong>Speller ${currentSpellerIndex + 1}</strong><br>
     <strong>Word:</strong> ${word} <br>
-    <strong>UK:</strong> /${uk}/ &nbsp;&nbsp; <strong>US:</strong> /${us}/ <br>
+    <strong>UK:</strong> <span class="phonetic">/${uk}/</span>&nbsp;&nbsp;
+    <strong>US:</strong> <span class="phonetic">/${us}/</span><br>
     <strong>Meaning:</strong> ${meaning} <br>
     <strong>Example:</strong> ${example} <br>
     <strong>Part of Speech:</strong> ${pos} <br>
