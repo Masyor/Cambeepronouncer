@@ -55,7 +55,7 @@ function uploadCSV(event) {
     rows.shift(); // Remove header
 
     const wordList = rows
-      .map(row => row.split(',').map(cell => cell.trim()))
+      .map(row => row.split('\t').map(cell => cell.trim()))
       .filter(cells => cells.length >= 7 && cells[0]);
 
 regularWords = wordList.filter(row => row[6]?.trim().toLowerCase() === "regular");
